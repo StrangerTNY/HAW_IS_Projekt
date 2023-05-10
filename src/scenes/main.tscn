@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs7s3epe2bq54"]
+
+[ext_resource type="Texture2D" uid="uid://chseddi1djpg1" path="res://assets/bg.png" id="1_luju5"]
+[ext_resource type="PackedScene" uid="uid://d14pp77mekt60" path="res://src/scenes/player.tscn" id="2_ktym7"]
+[ext_resource type="PackedScene" uid="uid://dchxqmjbv0hxi" path="res://src/scenes/walls.tscn" id="3_rcxtx"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(518, 543)
+scale = Vector2(6.025, 5.9)
+texture = ExtResource("1_luju5")
+
+[node name="Player" parent="." instance=ExtResource("2_ktym7")]
+position = Vector2(500, 500)
+slide_on_ceiling = false
+SPEED = 1000.0
+
+[node name="Wall_Left" parent="." instance=ExtResource("3_rcxtx")]
+position = Vector2(75, 500)
+
+[node name="Wall_Up" parent="." instance=ExtResource("3_rcxtx")]
+position = Vector2(500, 75)
+rotation = 1.5708
+
+[node name="Wall_Right" parent="." instance=ExtResource("3_rcxtx")]
+position = Vector2(925, 500)
+
+[node name="Wall_Down" parent="." instance=ExtResource("3_rcxtx")]
+position = Vector2(500, 925)
+rotation = -1.5708
