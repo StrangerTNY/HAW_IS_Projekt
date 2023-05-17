@@ -1,31 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs7s3epe2bq54"]
+[gd_scene load_steps=2 format=3 uid="uid://bj2wsuinrftmo"]
 
-[ext_resource type="Texture2D" uid="uid://chseddi1djpg1" path="res://assets/bg.png" id="1_luju5"]
-[ext_resource type="PackedScene" uid="uid://d14pp77mekt60" path="res://src/scenes/player.tscn" id="2_ktym7"]
-[ext_resource type="PackedScene" uid="uid://dchxqmjbv0hxi" path="res://src/scenes/walls.tscn" id="3_rcxtx"]
+[ext_resource type="Script" path="res://src/scripts/menu.gd" id="1_ccko7"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccko7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(518, 543)
-scale = Vector2(6.025, 5.9)
-texture = ExtResource("1_luju5")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -50.5
+offset_right = 37.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Player" parent="." instance=ExtResource("2_ktym7")]
-position = Vector2(500, 500)
-slide_on_ceiling = false
-SPEED = 1000.0
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
 
-[node name="Wall_Left" parent="." instance=ExtResource("3_rcxtx")]
-position = Vector2(75, 500)
+[node name="ControlButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls"
 
-[node name="Wall_Up" parent="." instance=ExtResource("3_rcxtx")]
-position = Vector2(500, 75)
-rotation = 1.5708
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
 
-[node name="Wall_Right" parent="." instance=ExtResource("3_rcxtx")]
-position = Vector2(925, 500)
-
-[node name="Wall_Down" parent="." instance=ExtResource("3_rcxtx")]
-position = Vector2(500, 925)
-rotation = -1.5708
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
