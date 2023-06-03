@@ -18,27 +18,13 @@ position = Vector2(500, 500)
 slide_on_ceiling = false
 SPEED = 1000.0
 
-[node name="Wall_Left" parent="." instance=ExtResource("3_lj8p5")]
-position = Vector2(75, 500)
-
-[node name="Wall_Up" parent="." instance=ExtResource("3_lj8p5")]
-position = Vector2(500, 75)
-rotation = 1.5708
-
-[node name="Wall_Right" parent="." instance=ExtResource("3_lj8p5")]
-position = Vector2(925, 500)
-
-[node name="Wall_Down" parent="." instance=ExtResource("3_lj8p5")]
-position = Vector2(500, 925)
-rotation = -1.5708
-
 [node name="Conductor" parent="." instance=ExtResource("4_rukoa")]
 stream = ExtResource("5_vdhbq")
+volume_db = -7.0
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.376
-autostart = true
+[node name="Walls" parent="." instance=ExtResource("3_lj8p5")]
 
-[connection signal="beat" from="Conductor" to="Wall_Left" method="_on_conductor_beat"]
-[connection signal="beat" from="Conductor" to="Wall_Up" method="_on_conductor_beat"]
-[connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]
+[connection signal="beat" from="Conductor" to="Player" method="_on_conductor_beat"]
+[connection signal="beat" from="Conductor" to="Walls" method="_on_conductor_beat"]
+[connection signal="measure" from="Conductor" to="Player" method="_on_conductor_measure"]
+[connection signal="measure" from="Conductor" to="Walls" method="_on_conductor_measure"]

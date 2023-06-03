@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://own3dwc2fwhw"]
+
+[ext_resource type="Script" path="res://src/scripts/single_wall.gd" id="1_nmfar"]
+[ext_resource type="Texture2D" uid="uid://bkc0ip07qfb6r" path="res://assets/wall.png" id="2_s5qsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qoy"]
+size = Vector2(440, 303.111)
+
+[node name="Wall" type="Area2D"]
+scale = Vector2(0.15, 1.8)
+collision_layer = 2
+script = ExtResource("1_nmfar")
+
+[node name="Portrait1" type="Sprite2D" parent="."]
+scale = Vector2(2.06667, 0.303333)
+texture = ExtResource("2_s5qsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_57qoy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

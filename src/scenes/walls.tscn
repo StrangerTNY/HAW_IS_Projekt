@@ -1,26 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dchxqmjbv0hxi"]
+[gd_scene load_steps=3 format=3 uid="uid://dchxqmjbv0hxi"]
 
-[ext_resource type="Script" path="res://src/scripts/walls.gd" id="1_apy0e"]
-[ext_resource type="Texture2D" uid="uid://bkc0ip07qfb6r" path="res://assets/wall.png" id="2_2fg16"]
+[ext_resource type="Script" path="res://src/scenes/walls.gd" id="1_hcgos"]
+[ext_resource type="PackedScene" uid="uid://own3dwc2fwhw" path="res://src/scenes/one_wall.tscn" id="1_oksso"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qoy"]
-size = Vector2(440, 303.111)
+[node name="Walls" type="Node2D"]
+script = ExtResource("1_hcgos")
 
-[node name="Wall" type="Area2D"]
-scale = Vector2(0.15, 1.8)
-collision_layer = 2
-script = ExtResource("1_apy0e")
+[node name="wall_up" parent="." instance=ExtResource("1_oksso")]
+position = Vector2(500, 75)
+rotation = 1.5708
 
-[node name="Portrait1" type="Sprite2D" parent="."]
-scale = Vector2(2.06667, 0.303333)
-texture = ExtResource("2_2fg16")
+[node name="wall_down" parent="." instance=ExtResource("1_oksso")]
+position = Vector2(500, 925)
+rotation = -1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_57qoy")
+[node name="wall_right" parent="." instance=ExtResource("1_oksso")]
+position = Vector2(925, 500)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="wall_left" parent="." instance=ExtResource("1_oksso")]
+position = Vector2(75, 500)
