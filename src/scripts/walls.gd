@@ -48,3 +48,8 @@ func _on_timer_timeout() -> void:
 	changeColor = true
 	randomNumber = rng.randi_range(1,4)
 	#print(randomNumber)
+
+
+func _on_conductor_beat(position) -> void:
+	if position == 2:
+		print("HEYY")

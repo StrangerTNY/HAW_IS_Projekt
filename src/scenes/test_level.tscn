@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs7s3epe2bq54"]
+[gd_scene load_steps=6 format=3 uid="uid://bs7s3epe2bq54"]
 
 [ext_resource type="Texture2D" uid="uid://chseddi1djpg1" path="res://assets/bg.png" id="1_lwity"]
 [ext_resource type="PackedScene" uid="uid://d14pp77mekt60" path="res://src/scenes/player.tscn" id="2_1glxu"]
 [ext_resource type="PackedScene" uid="uid://dchxqmjbv0hxi" path="res://src/scenes/walls.tscn" id="3_lj8p5"]
+[ext_resource type="PackedScene" uid="uid://dwfpwfxe3dtue" path="res://src/scenes/conductor.tscn" id="4_rukoa"]
+[ext_resource type="AudioStream" uid="uid://7an1gq4qwsw" path="res://assets/Rafuse To Give Up, Chelsea (NES).mp3" id="5_vdhbq"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -29,3 +31,14 @@ position = Vector2(925, 500)
 [node name="Wall_Down" parent="." instance=ExtResource("3_lj8p5")]
 position = Vector2(500, 925)
 rotation = -1.5708
+
+[node name="Conductor" parent="." instance=ExtResource("4_rukoa")]
+stream = ExtResource("5_vdhbq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.376
+autostart = true
+
+[connection signal="beat" from="Conductor" to="Wall_Left" method="_on_conductor_beat"]
+[connection signal="beat" from="Conductor" to="Wall_Up" method="_on_conductor_beat"]
+[connection signal="timeout" from="Timer" to="Player" method="_on_timer_timeout"]

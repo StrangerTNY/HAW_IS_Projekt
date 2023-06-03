@@ -3,9 +3,22 @@ extends CharacterBody2D
 @export var SPEED = 600.0
 var moving : bool = false
 # var direction = Vector2.ZERO
+var scaled : bool = false
+
+var tweenBounce
+var tweenMove
+
+func _ready() -> void:
+	tweenBounce = get_tree().create_tween()
+	tweenMove = get_tree().create_tween()
+
 
 func _process(delta):
 	
+#	tween.tween_property(self, "scale", Vector2(), 1)
+		
+#	tweenMe(scaled)
+
 	if !moving:
 		if Input.is_action_pressed("ui_right"):
 			velocity.x += SPEED
@@ -33,7 +46,8 @@ func moveAndBack():
 	moving = false
 	position = Vector2(500,500)
 	
-	
+func moveTween(direction):
+	pass
 
 #func _physics_process(delta):
 #	velocity = Vector2.ZERO
@@ -56,3 +70,16 @@ func moveAndBack():
 #		if distance <= SPEED * delta:
 #			position = target_position
 #			velocity = -direction * SPEED
+
+
+
+func _on_timer_timeout() -> void:	
+	if !scaled:
+		tweenBounce = create_tween()
+		tweenBounce.tween_property(self, "scale", Vector2(0.42,0.42), 0.02)
+	else:
+		tweenBounce = create_tween()
+		tweenBounce.tween_property(self, "scale", Vector2(0.3,0.3), 0.1)
+	scaled = !scaled
+
+	
