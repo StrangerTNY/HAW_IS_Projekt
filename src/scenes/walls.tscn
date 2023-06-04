@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dchxqmjbv0hxi"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://src/scenes/walls.gd" id="1_hcgos"]
+[ext_resource type="Script" path="res://src/scripts/walls.gd" id="1_hcgos"]
 [ext_resource type="PackedScene" uid="uid://own3dwc2fwhw" path="res://src/scenes/one_wall.tscn" id="1_oksso"]
 
 [node name="Walls" type="Node2D"]

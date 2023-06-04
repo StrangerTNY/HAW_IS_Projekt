@@ -13,7 +13,7 @@ func _ready() -> void:
 	tweenMove = get_tree().create_tween()
 
 
-func _process(delta):
+func _process(_delta):
 
 	if !moving:
 		if Input.is_action_pressed("ui_right"):
@@ -25,6 +25,7 @@ func _process(delta):
 		elif Input.is_action_pressed("ui_down"):
 			moveTween("down")
 		elif Input.is_action_pressed("ui_cancel"):
+			Gobal.score = 0
 			get_tree().change_scene_to_file("res://src/scenes/main.tscn")
 
 func moveBack():
@@ -68,7 +69,7 @@ func _on_conductor_beat(position) -> void:
 func _on_conductor_measure(position) -> void:
 	if !scaled:
 		tweenBounce = create_tween()
-		tweenBounce.tween_property(self, "scale", Vector2(0.34,0.34), 0.02)
+		tweenBounce.tween_property(self, "scale", Vector2(0.38,0.38), 0.02)
 	else:
 		tweenBounce = create_tween()
 		tweenBounce.tween_property(self, "scale", Vector2(0.3,0.3), 0.75/4)

@@ -11,7 +11,7 @@ scale = Vector2(0.15, 1.8)
 collision_layer = 2
 script = ExtResource("1_nmfar")
 
-[node name="Portrait1" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2.06667, 0.303333)
 texture = ExtResource("2_s5qsa")
 
