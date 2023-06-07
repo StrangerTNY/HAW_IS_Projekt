@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Gobal="*res://src/scenes/Gobal.gd"
+Global="*res://src/scripts/Global.gd"
 
 [display]
 

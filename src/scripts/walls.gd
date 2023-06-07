@@ -1,28 +1,26 @@
 extends Node2D
 
+# Skript aus walls Szene um Level synchron zum Beat zu gestalten
+
+# Momentan noch random
+var randomList = [1,2,3,4]
+
+# Der mäßig funktionierende Versuch Timing anzupassen
+# und schlußendlich Schwierigkeit anzupassen
+# "hold" Boolean führt dazu, dass nur jeder 2te Beat Hit
+# zu einem Wand Hit führt
+var hold = false
 var smallCounter = 0
 var bigCounter = 0
-var hold = false
-var randomList = [1,2,3,4]
 var speedThreshold = 4
 
-# Called when the node enters the scene tree for the first time.
+# Liste wird gewürfelt
 func _ready() -> void:
 	randomize()
 	randomList.shuffle()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_conductor_measure(position) -> void:
-	
-	pass
-	
-
-
+# Bei jedem nicht ausgesetztem Beat (!hold) wird
+# aus Liste ausgelesene passende Wand verfärbt
 func _on_conductor_beat(position) -> void:
 	
 	if !hold:
@@ -34,23 +32,26 @@ func _on_conductor_beat(position) -> void:
 			get_node("wall_down").changingColor()
 		elif smallCounter == randomList[3]:
 			get_node("wall_left").changingColor()
-	
+
+	# Idee war, dass jede Wand einmal dran ist bevor die erste
+	# nochmal dran ist. Funzt so aber nicht
 	if smallCounter >= 4:
 		randomize()
 		randomList.shuffle()
-	
+
 	smallCounter = (smallCounter % 4) + 1
-	
+
 	hold = true
-	
+
+	# Hilflose Versuche die Schnelligkeit over time anzupassen
 	if smallCounter == speedThreshold:
 		hold = false
-		
+
 	bigCounter += 1
 
 	if bigCounter >= 32:
 		speedThreshold = 2
-		
+
 	if bigCounter >= 32+16:
 		bigCounter = 0
 		speedThreshold = 4

@@ -1,5 +1,10 @@
 extends AudioStreamPlayer
 
+# Funktion für "conductor" Szene
+# Dient um Takt und Songverlauf abzurufen
+# komplett kopiert aus https://youtu.be/_FRiPPbJsFQ
+# GitHub: https://github.com/LegionGames/Conductor-Example/blob/master/Scripts/Conductor.gd
+
 @export var bpm := 110
 @export var measures := 4
 
