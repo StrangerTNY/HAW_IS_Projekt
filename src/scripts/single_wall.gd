@@ -36,10 +36,13 @@ func _on_body_entered(body: Node2D) -> void:
 		# gbValue = 1
 		
 		if hitMe:
+			tweenColorChange.stop()
 			get_node("/root/Gobal").pointScore()
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
 			hitMe = false
+		else:
+			Gobal.score -= 1
 		# modulate = Color(1, 1, 1, 1)
 #		changeColor = false	
 
