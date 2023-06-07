@@ -20,6 +20,11 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("ui_down"):
 		moveTween("down")
 		
+	# mit Input just released könnte man einführen
+	# dass nur dann die nächste Taste gedrückt werden
+	# damit man sich nicht diagonal bewegen kann
+	
+	
 	# mit Escape zurück zum Hauptmenü
 	elif Input.is_action_just_pressed("ui_cancel"):
 		Global.score = 0
