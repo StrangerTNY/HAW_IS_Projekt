@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	tweenColorChange = get_tree().create_tween()
 
-	modulate = Color(1, 0.3, 0.3, 1)
+	modulate = Color(1, 1, 1, 1)
 
 # Wenn Spieler einzelne Wand trifft wird Spieler "zurückgeschickt" (moveBack)
 # Wenn hitMe wird Verfärbung zurückgesetzt und Punkt plus, wenn nicht Punkt Abzug
@@ -26,13 +26,18 @@ func _on_body_entered(body: Node2D) -> void:
 			tweenColorChange.stop()
 			Global.addScore()
 			tweenColorChange = create_tween()
-			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 0.3, 0.3, 1),0.02)
+			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
 			hitMe = false
 		else:
 			Global.subtractScore()
+			tweenColorChange.stop()
+			tweenColorChange = create_tween()
+			tweenColorChange.tween_property($Sprite,"modulate",Color(0.8, 0.2, 0.2, 1),0.02)
+			tweenColorChange = create_tween()
+			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.5454)
 
 # Verfärbung in Farbe die getroffen werden soll
 func changingColor():
 	hitMe = true
 	tweenColorChange = create_tween()
-	tweenColorChange.tween_property($Sprite,"modulate",Color(0, 1, 1, 0.5),0.5454)
+	tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0.5454)
