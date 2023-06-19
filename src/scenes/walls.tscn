@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4dc78pfup67p"]
+[gd_scene load_steps=4 format=3 uid="uid://c4dc78pfup67p"]
 
 [ext_resource type="Script" path="res://src/scripts/walls.gd" id="1_hcgos"]
 [ext_resource type="PackedScene" uid="uid://own3dwc2fwhw" path="res://src/scenes/one_wall.tscn" id="1_oksso"]
+[ext_resource type="AudioStream" uid="uid://ckesgcnvvs0qs" path="res://assets/Sounds/Hit_02_changed.mp3" id="3_abecj"]
 
 [node name="Walls" type="Node2D"]
 script = ExtResource("1_hcgos")
@@ -19,3 +20,7 @@ position = Vector2(925, 500)
 
 [node name="wall_left" parent="." instance=ExtResource("1_oksso")]
 position = Vector2(75, 500)
+
+[node name="Hit_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_abecj")
+volume_db = -19.895

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7an1gq4qwsw"
+path="res://.godot/imported/Rafuse To Give Up, Chelsea (NES).mp3-d96a11f07f9f69044ae15c25f4a4f71e.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds/Rafuse To Give Up, Chelsea (NES).mp3"
+dest_files=["res://.godot/imported/Rafuse To Give Up, Chelsea (NES).mp3-d96a11f07f9f69044ae15c25f4a4f71e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

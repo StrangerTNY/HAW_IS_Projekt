@@ -28,6 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
 			hitMe = false
+			$"../Hit_Sound".play()
 		else:
 			Global.subtractScore()
 			tweenColorChange.stop()

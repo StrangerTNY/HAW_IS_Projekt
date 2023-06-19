@@ -14,6 +14,7 @@ func _on_start_button_pressed():
 
 # Steuerungsmenü wird geladen
 func _on_control_button_pressed():
+	$NavigationSound.play()
 	get_tree().change_scene_to_file("res://src/scenes/controls.tscn")
 
 # Spiel wird beendet

@@ -5,7 +5,7 @@ extends AudioStreamPlayer
 # komplett kopiert aus https://youtu.be/_FRiPPbJsFQ
 # GitHub: https://github.com/LegionGames/Conductor-Example/blob/master/Scripts/Conductor.gd
 
-@export var bpm := 110
+@export var bpm := 136
 @export var measures := 4
 
 # Tracking the beat and song position
@@ -26,6 +26,8 @@ signal measure(position)
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
+	
+	play_with_beat_offset(32)
 
 
 func _physics_process(_delta):

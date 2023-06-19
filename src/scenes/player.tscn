@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d14pp77mekt60"]
+[gd_scene load_steps=5 format=3 uid="uid://d14pp77mekt60"]
 
 [ext_resource type="Script" path="res://src/scripts/player.gd" id="1_x6qvq"]
 [ext_resource type="Texture2D" uid="uid://bvuuf2djyvr8v" path="res://assets/white_player.png" id="2_nasku"]
+[ext_resource type="Texture2D" uid="uid://dow12ogykxwua" path="res://assets/Glow.png" id="3_btw8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jp3v"]
 size = Vector2(290, 291)
@@ -17,3 +18,7 @@ texture = ExtResource("2_nasku")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7jp3v")
+
+[node name="Glow" type="Sprite2D" parent="."]
+scale = Vector2(1.94444, 1.94444)
+texture = ExtResource("3_btw8c")
