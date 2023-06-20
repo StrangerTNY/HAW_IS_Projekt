@@ -42,6 +42,7 @@ func moveBack():
 	
 # Tween wird erstellt und in eingegebene Richtung wird ausgeführt
 func moveTween(direction):
+	$Hit_Sound.play()
 	tweenMove = create_tween()
 	if direction == "right":
 		tweenMove.tween_property(self,"position", Vector2(1000-120,self.position.y),0.1)

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4ncys46ceslo"]
+
+[ext_resource type="Script" path="res://src/scenes/level_End.gd" id="1_istui"]
+[ext_resource type="Texture2D" uid="uid://p4ndtcgdvsd" path="res://assets/score_screen.jpg" id="2_j0vxc"]
+[ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_mdwqh"]
+[ext_resource type="Script" path="res://src/scripts/scoreLabel.gd" id="3_qdp4a"]
+
+[node name="Level_End" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_istui")
+
+[node name="MainScreen" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_j0vxc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -151.0
+offset_right = -69.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(0, -40)
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "If you see this something went wrong"
+horizontal_alignment = 1
+script = ExtResource("3_qdp4a")
+
+[node name="GoBackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Go Back"
+flat = true
+
+[node name="NavigationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mdwqh")
+volume_db = -25.752
+pitch_scale = 1.61
+
+[connection signal="pressed" from="VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]

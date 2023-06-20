@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d14pp77mekt60"]
+[gd_scene load_steps=6 format=3 uid="uid://d14pp77mekt60"]
 
 [ext_resource type="Script" path="res://src/scripts/player.gd" id="1_x6qvq"]
 [ext_resource type="Texture2D" uid="uid://bvuuf2djyvr8v" path="res://assets/white_player.png" id="2_nasku"]
 [ext_resource type="Texture2D" uid="uid://dow12ogykxwua" path="res://assets/Glow.png" id="3_btw8c"]
+[ext_resource type="AudioStream" uid="uid://ckesgcnvvs0qs" path="res://assets/Sounds/Hit_01_changed.mp3" id="4_547h7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jp3v"]
 size = Vector2(290, 291)
@@ -22,3 +23,7 @@ shape = SubResource("RectangleShape2D_7jp3v")
 [node name="Glow" type="Sprite2D" parent="."]
 scale = Vector2(1.94444, 1.94444)
 texture = ExtResource("3_btw8c")
+
+[node name="Hit_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_547h7")
+volume_db = -30.0
