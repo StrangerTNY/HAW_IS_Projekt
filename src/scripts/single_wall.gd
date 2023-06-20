@@ -9,6 +9,8 @@ var hitMe = false
 # Tween Animation
 var tweenColorChange
 
+signal localLoseLife
+
 # Tween erstellt und Farbe mit modulate eingestellt
 func _ready() -> void:
 	
@@ -31,6 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 			# $"../Hit_Sound".play()
 		else:
 			$"../Fail_Sound".play()
+			emit_signal("localLoseLife")
 			Global.subtractScore()
 			tweenColorChange.stop()
 			tweenColorChange = create_tween()

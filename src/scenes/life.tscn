@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0dhib73o6jy"]
+
+[ext_resource type="Script" path="res://src/scripts/life.gd" id="1_4lr3y"]
+[ext_resource type="Texture2D" uid="uid://bhjc4xrda2fhp" path="res://assets/life.png" id="1_j2xch"]
+
+[node name="Life" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4lr3y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0449999
+anchor_top = 0.021
+anchor_right = -0.0449999
+anchor_bottom = 0.021
+offset_left = 865.0
+offset_top = 58.0
+offset_right = 905.0
+offset_bottom = 98.0
+scale = Vector2(0.4, 0.4)
+metadata/_edit_use_anchors_ = true
+
+[node name="Life1" type="Sprite2D" parent="HBoxContainer"]
+texture = ExtResource("1_j2xch")
+
+[node name="Life2" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(122, 0)
+texture = ExtResource("1_j2xch")
+
+[node name="Life3" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(254, 0)
+texture = ExtResource("1_j2xch")

@@ -14,6 +14,9 @@ var smallCounter = 0
 var bigCounter = 0
 var speedThreshold = 4
 
+signal loseALife
+
+
 # Liste wird gewürfelt
 func _ready() -> void:
 	randomize()
@@ -56,3 +59,6 @@ func _on_conductor_beat(position) -> void:
 		bigCounter = 0
 		speedThreshold = 4
 	
+
+func _on_lose_handler_lose_a_life() -> void:
+	emit_signal("loseALife")

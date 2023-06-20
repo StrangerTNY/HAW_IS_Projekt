@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4ncys46ceslo"]
+[gd_scene load_steps=5 format=3 uid="uid://bjllogwn72n0f"]
 
-[ext_resource type="Script" path="res://src/scenes/level_End.gd" id="1_istui"]
+[ext_resource type="Script" path="res://src/scripts/level_End.gd" id="1_ka056"]
 [ext_resource type="Texture2D" uid="uid://p4ndtcgdvsd" path="res://assets/score_screen.jpg" id="2_j0vxc"]
 [ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_mdwqh"]
 [ext_resource type="Script" path="res://src/scripts/scoreLabel.gd" id="3_qdp4a"]
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_istui")
+script = ExtResource("1_ka056")
 
 [node name="MainScreen" type="Sprite2D" parent="."]
 position = Vector2(500, 500)

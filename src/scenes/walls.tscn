@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1206wvt4xd40"]
+[gd_scene load_steps=5 format=3 uid="uid://m0u8p7no3qe6"]
 
 [ext_resource type="Script" path="res://src/scripts/walls.gd" id="1_hcgos"]
 [ext_resource type="PackedScene" uid="uid://own3dwc2fwhw" path="res://src/scenes/one_wall.tscn" id="1_oksso"]
-[ext_resource type="AudioStream" uid="uid://ckesgcnvvs0qs" path="res://assets/Sounds/Hit_01_changed.mp3" id="3_6sri7"]
 [ext_resource type="AudioStream" uid="uid://ddxpbao0aaw7o" path="res://assets/Sounds/Hit_02_changed.mp3" id="3_abecj"]
+[ext_resource type="Script" path="res://src/scripts/loseHandler.gd" id="4_t1t3u"]
 
 [node name="Walls" type="Node2D"]
 script = ExtResource("1_hcgos")
@@ -22,10 +22,15 @@ position = Vector2(925, 500)
 [node name="wall_left" parent="." instance=ExtResource("1_oksso")]
 position = Vector2(75, 500)
 
-[node name="Hit_Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_6sri7")
-volume_db = -25.0
-
 [node name="Fail_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_abecj")
 volume_db = -25.0
+
+[node name="loseHandler" type="Node" parent="."]
+script = ExtResource("4_t1t3u")
+
+[connection signal="localLoseLife" from="wall_up" to="loseHandler" method="_on_wall_up_local_lose_life"]
+[connection signal="localLoseLife" from="wall_down" to="loseHandler" method="_on_wall_down_local_lose_life"]
+[connection signal="localLoseLife" from="wall_right" to="loseHandler" method="_on_wall_right_local_lose_life"]
+[connection signal="localLoseLife" from="wall_left" to="loseHandler" method="_on_wall_left_local_lose_life"]
+[connection signal="loseALife" from="loseHandler" to="." method="_on_lose_handler_lose_a_life"]

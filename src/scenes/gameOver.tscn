@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://be00vnmqpmtj8"]
+
+[ext_resource type="Script" path="res://src/scripts/gameOver.gd" id="1_3umfk"]
+[ext_resource type="Texture2D" uid="uid://2j4ly2e6fkmk" path="res://assets/GameOver_screen.jpg" id="2_abij7"]
+[ext_resource type="Script" path="res://src/scripts/scoreLabel.gd" id="3_oma5h"]
+[ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="4_745np"]
+
+[node name="Game_Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3umfk")
+
+[node name="GameOverScreen" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_abij7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -132.0
+offset_right = -151.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(0, -40)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Your Score: "
+
+[node name="Score" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "score"
+horizontal_alignment = 1
+script = ExtResource("3_oma5h")
+
+[node name="TryAgainButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Try Again"
+flat = true
+
+[node name="GoBackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back to Menu"
+flat = true
+
+[node name="NavigationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_745np")
+volume_db = -25.752
+pitch_scale = 1.61
+
+[connection signal="pressed" from="VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]

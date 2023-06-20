@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://4yv21okq2h3l"]
+[gd_scene load_steps=9 format=3 uid="uid://4yv21okq2h3l"]
 
 [ext_resource type="Texture2D" uid="uid://chseddi1djpg1" path="res://assets/bg.png" id="1_1yv5o"]
 [ext_resource type="Script" path="res://src/scripts/level_1.gd" id="1_41c3x"]
 [ext_resource type="PackedScene" uid="uid://d14pp77mekt60" path="res://src/scenes/player.tscn" id="2_pvi5p"]
 [ext_resource type="PackedScene" uid="uid://dwfpwfxe3dtue" path="res://src/scenes/conductor.tscn" id="3_0exd4"]
 [ext_resource type="AudioStream" uid="uid://cy1ylvjnx8vl3" path="res://assets/Sounds/06 - Rebels Be.ogg" id="4_86oc8"]
-[ext_resource type="PackedScene" uid="uid://b1206wvt4xd40" path="res://src/scenes/walls.tscn" id="5_meot4"]
+[ext_resource type="PackedScene" uid="uid://m0u8p7no3qe6" path="res://src/scenes/walls.tscn" id="5_meot4"]
 [ext_resource type="Script" path="res://src/scripts/scoreLabel.gd" id="6_cp1f3"]
+[ext_resource type="PackedScene" uid="uid://cc0dhib73o6jy" path="res://src/scenes/life.tscn" id="8_tpafo"]
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_41c3x")
@@ -35,6 +36,13 @@ offset_bottom = 81.0
 scale = Vector2(2, 2)
 script = ExtResource("6_cp1f3")
 
+[node name="Life" parent="." instance=ExtResource("8_tpafo")]
+offset_left = -26.0
+offset_top = 17.0
+offset_right = -26.0
+offset_bottom = 17.0
+
 [connection signal="beat" from="Conductor" to="Walls" method="_on_conductor_beat"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
 [connection signal="measure" from="Conductor" to="Player" method="_on_conductor_measure"]
+[connection signal="loseALife" from="Walls" to="Life" method="_on_walls_lose_a_life"]
