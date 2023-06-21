@@ -21,6 +21,7 @@ signal loseALife
 func _ready() -> void:
 	randomize()
 	randomList.shuffle()
+	get_node("wall_up").changingColor()	
 
 # Bei jedem nicht ausgesetztem Beat (!hold) wird
 # aus Liste ausgelesene passende Wand verfärbt

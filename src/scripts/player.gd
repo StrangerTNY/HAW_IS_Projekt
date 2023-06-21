@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 # Spieler Skript
 
+signal startSong
+var started : bool = false
+
 # Um zu tracken wann der Spieler größer oder kleiner wird
 var scaled : bool = false
 
@@ -17,6 +20,9 @@ func _process(_delta):
 		moveTween("left")
 	elif Input.is_action_just_pressed("ui_up"):
 		moveTween("up")
+		if !started:
+			emit_signal("startSong")
+			started = true
 	elif Input.is_action_just_pressed("ui_down"):
 		moveTween("down")
 		

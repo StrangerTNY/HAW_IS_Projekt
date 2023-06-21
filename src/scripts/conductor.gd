@@ -79,3 +79,7 @@ func _on_StartTimer_timeout():
 		play()
 		$StartTimer.stop()
 	_report_beat()
+
+
+func _on_player_start_song():
+	play()

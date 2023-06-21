@@ -43,6 +43,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 # Verfärbung in Farbe die getroffen werden soll
 func changingColor():
+	# wenn ich hier noch ein Argument nachfrage kann ich gucken
+	# an welcher Stelle ich mich im SOng befinde
+	# und kann die Wand "ablaufen" lassen
 	hitMe = true
 	tweenColorChange = create_tween()
 	tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0) #0.5454 neu: .44117
