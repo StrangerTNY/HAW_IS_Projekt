@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjm6pbl7h2avy"]
+[gd_scene load_steps=4 format=3 uid="uid://cjm6pbl7h2avy"]
 
 [ext_resource type="Script" path="res://src/scripts/controls.gd" id="1_1p5gc"]
 [ext_resource type="Texture2D" uid="uid://chffauk8ak4t7" path="res://assets/screeni.png" id="1_nl8rt"]
+[ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_480pi"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -80,5 +81,10 @@ text = "Back"
 position = Vector2(489, 223)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_nl8rt")
+
+[node name="NavigationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_480pi")
+volume_db = -25.752
+pitch_scale = 1.61
 
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_button_pressed"]

@@ -4,7 +4,8 @@ extends Area2D
 # Verfärbung sind noch komisch und funktionieren ungünstig
 
 # Boolean ob Wand getroffen werden soll
-var hitMe = false
+var hitMeSoon : bool = false
+var hitMeNow : bool = false
 
 # Tween Animation
 var tweenColorChange
@@ -24,13 +25,14 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body.moveBack()
 		
-		if hitMe:
+		if hitMeNow or hitMeSoon:
 			tweenColorChange.stop()
-			Global.addScore()
+			if hitMeNow:
+				Global.addScore() 
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
-			hitMe = false
-			# $"../Hit_Sound".play()
+			hitMeNow = false
+			hitMeSoon = false
 		else:
 			$"../Fail_Sound".play()
 			emit_signal("localLoseLife")
@@ -44,8 +46,12 @@ func _on_body_entered(body: Node2D) -> void:
 # Verfärbung in Farbe die getroffen werden soll
 func changingColor():
 	# wenn ich hier noch ein Argument nachfrage kann ich gucken
-	# an welcher Stelle ich mich im SOng befinde
-	# und kann die Wand "ablaufen" lassen
-	hitMe = true
-	tweenColorChange = create_tween()
-	tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0) #0.5454 neu: .44117
+	# ob sich die Wall gelb oder grün färben muss
+	if hitMeSoon:
+		hitMeNow = true
+		tweenColorChange = create_tween()
+		tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0) # Timing war: 0.5454 neu: .44117
+	else:
+		hitMeSoon = true
+		tweenColorChange = create_tween()
+		tweenColorChange.tween_property($Sprite,"modulate",Color(0.8,0.8,0.5),0)
