@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjm6pbl7h2avy"]
 
 [ext_resource type="Script" path="res://src/scripts/controls.gd" id="1_1p5gc"]
-[ext_resource type="Texture2D" uid="uid://chffauk8ak4t7" path="res://assets/screeni.png" id="1_nl8rt"]
+[ext_resource type="Texture2D" uid="uid://b1fiw34naithf" path="res://assets/screeni2.png" id="2_og58q"]
 [ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_480pi"]
 
 [node name="Control" type="Control"]
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14902, 0.227451, 0.160784, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -38,7 +38,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 
 [node name="Margin_3" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="Text_1" type="Label" parent="VBoxContainer"]
@@ -53,13 +53,17 @@ text = "to hit the sides at the right time"
 horizontal_alignment = 1
 
 [node name="Margin" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Text_3" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "As soon as the color of one side changes hit it!"
+text = "First a side turns Yellow.
+After another Beat it turns Green. 
+Then hit it!
+But be warned if you hit a white side 
+you will lose a life"
 horizontal_alignment = 1
 
 [node name="Text_4" type="Label" parent="VBoxContainer"]
@@ -69,7 +73,6 @@ text = "Try to beat your own Highsore"
 horizontal_alignment = 1
 
 [node name="Margin_2" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
@@ -79,8 +82,8 @@ text = "Back"
 
 [node name="Screeni" type="Sprite2D" parent="."]
 position = Vector2(489, 223)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_nl8rt")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_og58q")
 
 [node name="NavigationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_480pi")

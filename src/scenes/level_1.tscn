@@ -27,6 +27,7 @@ slide_on_ceiling = false
 stream = ExtResource("4_86oc8")
 volume_db = -14.0
 autoplay = false
+bpm = 68
 
 [node name="Walls" parent="." instance=ExtResource("5_meot4")]
 

@@ -26,9 +26,13 @@ func _on_body_entered(body: Node2D) -> void:
 		body.moveBack()
 		
 		if hitMeNow or hitMeSoon:
+			print(name, " hit")
 			tweenColorChange.stop()
 			if hitMeNow:
-				Global.addScore() 
+				#Global.addScore() 
+				Global.score += 5
+			else:
+				Global.score += 1
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
 			hitMeNow = false
@@ -36,7 +40,9 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			$"../Fail_Sound".play()
 			emit_signal("localLoseLife")
-			Global.subtractScore()
+			#Global.subtractScore()
+			if Global.score > 0:
+				Global.score -= 1
 			tweenColorChange.stop()
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(0.8, 0.2, 0.2, 1),0.02)
@@ -44,14 +50,23 @@ func _on_body_entered(body: Node2D) -> void:
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.5454)
 
 # Verfärbung in Farbe die getroffen werden soll
-func changingColor():
+func changingColor(color):
 	# wenn ich hier noch ein Argument nachfrage kann ich gucken
 	# ob sich die Wall gelb oder grün färben muss
-	if hitMeSoon:
+	if color == 2 and hitMeSoon:
 		hitMeNow = true
 		tweenColorChange = create_tween()
 		tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0) # Timing war: 0.5454 neu: .44117
-	else:
+	elif color == 1:
 		hitMeSoon = true
 		tweenColorChange = create_tween()
 		tweenColorChange.tween_property($Sprite,"modulate",Color(0.8,0.8,0.5),0)
+		
+func changeColorBack():
+	
+	#print("doing schtuff")
+	hitMeNow = false
+	hitMeSoon = false
+	
+	tweenColorChange = create_tween()
+	tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1,1, 1),0)

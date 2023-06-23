@@ -13,8 +13,10 @@ func _process(delta: float) -> void:
 
 
 func _on_try_again_button_pressed() -> void:
+	Global.score = 0
 	get_tree().change_scene_to_file("res://src/scenes/level_1.tscn")
 
 
 func _on_go_back_button_pressed() -> void:
+	Global.score = 0
 	get_tree().change_scene_to_file("res://src/scenes/main.tscn")
