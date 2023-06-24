@@ -8,6 +8,7 @@ var lastRandomList = []
 var latestRandomList = []
 var listToUse = []
 
+# inkrementale Zähler
 var lastWall = 0
 var lateWall = 0
 
@@ -31,7 +32,7 @@ func _ready() -> void:
 	randomList.shuffle()
 	lastRandomList = randomList
 	latestRandomList = randomList
-	#get_node("wall_up").modulate = Color(1,0,0,1)	
+	print(randomList, lastRandomList, latestRandomList)
 	get_node("wall_up").changingColor(1)
 	get_node("wall_up").changingColor(2)
 
@@ -39,36 +40,42 @@ func _ready() -> void:
 # aus Liste ausgelesene passende Wand verfärbt
 func _on_conductor_beat(position) -> void:
 		
+	print(smallCounter,", ", lastWall,", ", lateWall)
+	print(lastRandomList)	
+		
 	# funzt noch nicht ganz
 	# manchmal werden 2 gleichzeitig verändert
 	if !hold:
 		colorChanger(1, smallCounter)
 		#colorChanger(randomList[smallCounter-1])
 		#print("Gelb: " , smallCounter)
+		#if !justStarted:
 		colorChanger(2, lastWall)
 		#colorChanger(randomList[lastWall-1])
 		#print("Grün: ", lastWall)
-		#if !justStarted:
 		backColorChanger(lateWall)
 		#print("Y: ", smallCounter, ", G: ", lastWall, ", T: ", lateWall)
 		
 	
 	if lateWall >= 4:
-		lastRandomList = lastRandomList
+		print("neue zu späte Liste: ", lastRandomList)
+		latestRandomList = lastRandomList
 	if lastWall >= 4:
+		print("neue grün werdende Liste: ", randomList)
 		lastRandomList = randomList
-	
-	lateWall = lastWall
-	lastWall = smallCounter
-	
 	
 	if smallCounter >= 4:
 		randomize()
 		randomList.shuffle()
 		# Damit eine Wand nicht doppel hintereinander vorkommt
-		while randomList[0] == lastWall:
+		while randomList[0] == lastRandomList[3]:
 			randomize()
 			randomList.shuffle()
+		print("neueste Liste: ", randomList, " und letzte Liste: ",lastRandomList)
+		
+	lateWall = lastWall
+	lastWall = smallCounter
+	
 	
 #	lateWall = (lateWall % 4) + 1
 #	lastWall = (lastWall % 4) + 1
@@ -88,15 +95,15 @@ func _on_conductor_beat(position) -> void:
 #	if bigCounter >= 32+16:
 #		bigCounter = 0
 #		speedThreshold = 4
-		
-	justStarted = false
 	
 func colorChanger(color, wallToChange):
 	
 	if color == 1:
 		listToUse = randomList
+		print("Liste 1: ", listToUse)
 	elif color == 2:
 		listToUse = lastRandomList
+		print("Liste 2: ", listToUse)
 
 	if wallToChange == listToUse[0]:
 		get_node("wall_up").changingColor(color)
@@ -113,7 +120,6 @@ func colorChanger(color, wallToChange):
 		
 func backColorChanger(wallToChangeBack):
 
-	#print("i have no idea")
 	if wallToChangeBack == latestRandomList[0]:
 		get_node("wall_up").changeColorBack()
 		print("Delete_Oben")

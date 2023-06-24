@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Global.globalBPM = 68
 	pass # Replace with function body.
 
 

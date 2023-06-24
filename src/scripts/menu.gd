@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 
 # Erstes Level wird geladen
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://src/scenes/level_1.tscn")
+	print("START")
+	get_tree().change_scene_to_file("res://src/scenes/set_difficulty.tscn")
 
 # Steuerungsmenü wird geladen
 func _on_control_button_pressed():

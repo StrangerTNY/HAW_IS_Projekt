@@ -31,6 +31,9 @@ func _ready():
 
 
 func _physics_process(_delta):
+	
+	changeBPM(Global.globalBPM)
+	
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
@@ -83,3 +86,9 @@ func _on_StartTimer_timeout():
 
 func _on_player_start_song():
 	play()
+	
+func changeBPM(newBPM):
+	if bpm != newBPM:
+		print("BPM changed from: ", bpm, " to: ", newBPM)
+		bpm = newBPM
+		sec_per_beat = 60.0 / bpm

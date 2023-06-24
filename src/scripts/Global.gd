@@ -6,6 +6,7 @@ extends Node
 # Brauch manchmal eine extra Einladung...
 
 var score = 0
+var globalBPM = 136/2
 
 func addScore():
 	Global.score += 1

@@ -38,11 +38,15 @@ func _on_body_entered(body: Node2D) -> void:
 			hitMeNow = false
 			hitMeSoon = false
 		else:
+			print("Leben verloren")
 			$"../Fail_Sound".play()
 			emit_signal("localLoseLife")
 			#Global.subtractScore()
 			if Global.score > 0:
-				Global.score -= 1
+				if Global.score - 10 < 0:
+					Global.score = 0
+				else:
+					Global.score -= 10
 			tweenColorChange.stop()
 			tweenColorChange = create_tween()
 			tweenColorChange.tween_property($Sprite,"modulate",Color(0.8, 0.2, 0.2, 1),0.02)
@@ -67,6 +71,12 @@ func changeColorBack():
 	#print("doing schtuff")
 	hitMeNow = false
 	hitMeSoon = false
+	
+	if Global.score > 0:
+		if Global.score - 2 < 0:
+			Global.score = 0
+		else:
+			Global.score -= 2
 	
 	tweenColorChange = create_tween()
 	tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1,1, 1),0)

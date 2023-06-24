@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpct1ec55hrob"]
+
+[ext_resource type="Script" path="res://src/scripts/set_difficulty.gd" id="1_6frt0"]
+[ext_resource type="Texture2D" uid="uid://dmgxfvvot5iap" path="res://assets/main_screen.jpg" id="2_hiwn6"]
+[ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_kccru"]
+
+[node name="DifficultyMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6frt0")
+
+[node name="MainScreen" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_hiwn6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -151.0
+offset_right = -69.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(0, -40)
+
+[node name="NormalButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Normal"
+flat = true
+
+[node name="HardButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Hard"
+flat = true
+
+[node name="GoBackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Go Back"
+flat = true
+
+[node name="NavigationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kccru")
+volume_db = -25.752
+pitch_scale = 1.61
+
+[connection signal="pressed" from="VBoxContainer/NormalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HardButton" to="." method="_on_hard_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]
