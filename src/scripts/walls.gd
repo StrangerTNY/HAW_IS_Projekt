@@ -4,9 +4,9 @@ extends Node2D
 
 # Momentan noch random
 var randomList = [1,2,3,4]
-var lastRandomList = []
-var latestRandomList = []
-var listToUse = []
+var lastRandomList = [1,2,3,4]
+var latestRandomList = [1,2,3,4]
+var listToUse = [1,2,3,4]
 
 # inkrementale Zähler
 var lastWall = 0
@@ -28,11 +28,14 @@ signal loseALife
 
 # Liste wird gewürfelt
 func _ready() -> void:
+	print("READYING")
 	randomize()
 	randomList.shuffle()
-	lastRandomList = randomList
-	latestRandomList = randomList
-	print(randomList, lastRandomList, latestRandomList)
+	#lastRandomList = randomList
+	lastRandomList = renewList(randomList, lastRandomList)
+	#latestRandomList = randomList
+	latestRandomList = renewList(randomList, latestRandomList)
+	print(randomList)
 	get_node("wall_up").changingColor(1)
 	get_node("wall_up").changingColor(2)
 
@@ -41,7 +44,7 @@ func _ready() -> void:
 func _on_conductor_beat(position) -> void:
 		
 	print(smallCounter,", ", lastWall,", ", lateWall)
-	print(lastRandomList)	
+	print("ältere Liste: ",lastRandomList)	
 		
 	# funzt noch nicht ganz
 	# manchmal werden 2 gleichzeitig verändert
@@ -59,10 +62,13 @@ func _on_conductor_beat(position) -> void:
 	
 	if lateWall >= 4:
 		print("neue zu späte Liste: ", lastRandomList)
-		latestRandomList = lastRandomList
+		#latestRandomList = lastRandomList
+		latestRandomList = renewList(lastRandomList, latestRandomList)
 	if lastWall >= 4:
 		print("neue grün werdende Liste: ", randomList)
-		lastRandomList = randomList
+		#lastRandomList = randomList
+		lastRandomList = renewList(randomList, lastRandomList)
+		#lastRandomList = [1,2,3,4]
 	
 	if smallCounter >= 4:
 		randomize()
@@ -132,6 +138,14 @@ func backColorChanger(wallToChangeBack):
 	elif wallToChangeBack == latestRandomList[3]:
 		get_node("wall_left").changeColorBack()
 		print("Delete_Links")
+
+func renewList(listFrom, listTo):
+	var i = 0
+	for number in listFrom:
+		listTo[i] = number
+		i += 1
+	return listTo
+
 
 func _on_lose_handler_lose_a_life() -> void:
 	emit_signal("loseALife")

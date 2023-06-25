@@ -7,6 +7,8 @@ extends Area2D
 var hitMeSoon : bool = false
 var hitMeNow : bool = false
 
+var canFail : bool = false
+
 # Tween Animation
 var tweenColorChange
 
@@ -37,6 +39,7 @@ func _on_body_entered(body: Node2D) -> void:
 			tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1, 1, 1),0.02)
 			hitMeNow = false
 			hitMeSoon = false
+			canFail = false
 		else:
 			print("Leben verloren")
 			$"../Fail_Sound".play()
@@ -61,6 +64,7 @@ func changingColor(color):
 		hitMeNow = true
 		tweenColorChange = create_tween()
 		tweenColorChange.tween_property($Sprite,"modulate",Color(0.3, 0.6, 0.3, 1),0) # Timing war: 0.5454 neu: .44117
+		canFail = true
 	elif color == 1:
 		hitMeSoon = true
 		tweenColorChange = create_tween()
@@ -71,12 +75,12 @@ func changeColorBack():
 	#print("doing schtuff")
 	hitMeNow = false
 	hitMeSoon = false
-	
-	if Global.score > 0:
-		if Global.score - 2 < 0:
-			Global.score = 0
-		else:
-			Global.score -= 2
-	
+	if canFail:	
+		if Global.score > 0:
+			if Global.score - 2 < 0:
+				Global.score = 0
+			else:
+				Global.score -= 2
+		
 	tweenColorChange = create_tween()
 	tweenColorChange.tween_property($Sprite,"modulate",Color(1, 1,1, 1),0)
