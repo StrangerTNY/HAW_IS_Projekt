@@ -26,4 +26,4 @@ texture = ExtResource("3_btw8c")
 
 [node name="Hit_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_547h7")
-volume_db = -30.0
+volume_db = -25.0

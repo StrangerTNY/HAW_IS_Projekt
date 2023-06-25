@@ -43,8 +43,8 @@ func _ready() -> void:
 # aus Liste ausgelesene passende Wand verfärbt
 func _on_conductor_beat(position) -> void:
 		
-	print(smallCounter,", ", lastWall,", ", lateWall)
-	print("ältere Liste: ",lastRandomList)	
+	#print(smallCounter,", ", lastWall,", ", lateWall)
+	#print("ältere Liste: ",lastRandomList)	
 		
 	# funzt noch nicht ganz
 	# manchmal werden 2 gleichzeitig verändert
@@ -61,11 +61,11 @@ func _on_conductor_beat(position) -> void:
 		
 	
 	if lateWall >= 4:
-		print("neue zu späte Liste: ", lastRandomList)
+		#print("neue zu späte Liste: ", lastRandomList)
 		#latestRandomList = lastRandomList
 		latestRandomList = renewList(lastRandomList, latestRandomList)
 	if lastWall >= 4:
-		print("neue grün werdende Liste: ", randomList)
+		#print("neue grün werdende Liste: ", randomList)
 		#lastRandomList = randomList
 		lastRandomList = renewList(randomList, lastRandomList)
 		#lastRandomList = [1,2,3,4]
@@ -77,7 +77,7 @@ func _on_conductor_beat(position) -> void:
 		while randomList[0] == lastRandomList[3]:
 			randomize()
 			randomList.shuffle()
-		print("neueste Liste: ", randomList, " und letzte Liste: ",lastRandomList)
+		#print("neueste Liste: ", randomList, " und letzte Liste: ",lastRandomList)
 		
 	lateWall = lastWall
 	lastWall = smallCounter

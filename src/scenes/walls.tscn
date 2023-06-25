@@ -9,22 +9,22 @@
 script = ExtResource("1_hcgos")
 
 [node name="wall_up" parent="." instance=ExtResource("1_oksso")]
-position = Vector2(500, 75)
+position = Vector2(500, 100)
 rotation = 1.5708
 
 [node name="wall_down" parent="." instance=ExtResource("1_oksso")]
-position = Vector2(500, 925)
+position = Vector2(500, 900)
 rotation = -1.5708
 
 [node name="wall_right" parent="." instance=ExtResource("1_oksso")]
-position = Vector2(925, 500)
+position = Vector2(900, 500)
 
 [node name="wall_left" parent="." instance=ExtResource("1_oksso")]
-position = Vector2(75, 500)
+position = Vector2(100, 500)
 
 [node name="Fail_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_abecj")
-volume_db = -25.0
+volume_db = -20.0
 
 [node name="loseHandler" type="Node" parent="."]
 script = ExtResource("4_t1t3u")

@@ -32,18 +32,19 @@ bpm = 68
 [node name="Walls" parent="." instance=ExtResource("5_meot4")]
 
 [node name="Score" type="Label" parent="."]
-offset_left = 52.0
-offset_top = 58.0
-offset_right = 92.0
-offset_bottom = 81.0
-scale = Vector2(2, 2)
+offset_left = 60.0
+offset_top = 72.0
+offset_right = 100.0
+offset_bottom = 98.0
+scale = Vector2(3, 3)
+text = "0"
 script = ExtResource("6_cp1f3")
 
 [node name="Life" parent="." instance=ExtResource("8_tpafo")]
 offset_left = -26.0
-offset_top = 17.0
+offset_top = 40.0
 offset_right = -26.0
-offset_bottom = 17.0
+offset_bottom = 40.0
 
 [connection signal="startSong" from="Player" to="Conductor" method="_on_player_start_song"]
 [connection signal="beat" from="Conductor" to="Walls" method="_on_conductor_beat"]

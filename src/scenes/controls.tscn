@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjm6pbl7h2avy"]
 
 [ext_resource type="Script" path="res://src/scripts/controls.gd" id="1_1p5gc"]
-[ext_resource type="Texture2D" uid="uid://b1fiw34naithf" path="res://assets/screeni2.png" id="2_og58q"]
+[ext_resource type="Texture2D" uid="uid://bv4bsvwm4rbn4" path="res://assets/screeni3.png" id="2_pp1ge"]
 [ext_resource type="AudioStream" uid="uid://s3721bm45lhp" path="res://assets/Sounds/Menu_Navigate_03.mp3" id="3_480pi"]
 
 [node name="Control" type="Control"]
@@ -82,8 +82,8 @@ text = "Back"
 
 [node name="Screeni" type="Sprite2D" parent="."]
 position = Vector2(489, 223)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_og58q")
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("2_pp1ge")
 
 [node name="NavigationSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_480pi")
